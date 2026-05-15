@@ -25,7 +25,7 @@ void applyState(int state) {
       Serial.println("Mode: OFF");
       break;
     case ECO:
-      motor.setSpeed(120);
+      motor.setSpeed(80);
       motor.run(FORWARD);
       Serial.println("Mode: ECO (speed=80)");
       break;
