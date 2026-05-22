@@ -1,0 +1,32 @@
+int pinPIR = 2;
+int pinLED = 9;
+int etatPir = LOW;
+int val = 0;
+
+void setup() {
+  pinMode(pinPIR, INPUT);
+  pinMode(pinLED, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  val = digitalRead(pinPIR);
+
+  if (val == HIGH) {
+    if (etatPir == LOW) {
+      Serial.print("[");
+      Serial.print(millis());
+      Serial.println(" ms] Mouvement detecte! → OUT HIGH");
+      etatPir = HIGH;
+    }
+    digitalWrite(pinLED, HIGH);
+  } else {
+    if (etatPir == HIGH) {
+      Serial.print("[");
+      Serial.print(millis());
+      Serial.println(" ms] Mouvement termine! → OUT LOW");
+      etatPir = LOW;
+    }
+    digitalWrite(pinLED, LOW);
+  }
+}
